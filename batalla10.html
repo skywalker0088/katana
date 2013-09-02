@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Framework</title>
+	 <meta charset="utf-8">
+	<script type="text/javascript" src="js/katana.js"></script> 
+	<style>
+	*{
+		margin:0;
+	}
+	#container{
+		width: 1024px;
+		border: solid 1px #ccc;
+		font-family:"";
+		color:#333;
+	}	
+	.header{
+		width:100%;
+		background: #ccc;
+	}
+	.header h1{
+		font-size: 32px;
+		width: 100%;
+		text-align:center;
+	}
+	.header nav{
+		width:100%;
+		text-align: right;
+	}
+	.header nav ul li{
+		display: inline-block;
+	}
+	.header nav a{
+		text-decoration:none;
+		color:orange;
+	}
+	.header nav a:hover{
+		text-decoration: underline;
+	}
+	.wrapper{
+		
+	}
+	.footer{
+	
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		
+
+	</div>
+	
+	<script>
+	(function(){
+	//headers
+		var opch={
+			"id":"header",
+			"class":"header"
+		}
+		var h=$.crear("div",opch);
+		var h1=$.crear("h1");
+		h1.esc("titulo");
+		h1.css({"background":"#ccc"});
+		
+		var menu=new Array("inicio","contacto","servicio");
+		var nav= $.crear("nav");
+		var ul =$.crear("ul");
+		for(var t=0;t<3;t++){
+			var li=$.crear("li");
+			var a=$.crear("a");
+			a.esc(menu[t]);
+			li.metele(a);
+			ul.metele(li);
+		}
+		nav.metele(ul);
+		h.metele(nav);
+		h.metele(h1);
+	//wrapper
+		var opcw={
+			"id":"wrapper",
+			"class":"wrapper"
+		}
+		var w=$.crear("div",opcw);
+		var form=$.crear("form");
+		var opcIn={
+			"id":"nombre",
+			"placeholder":"Ingrese el Nombre"
+		}
+		var opcOB={
+			"vacio":true,
+			"letra":true,
+		//	"correo":true,
+			"max":10
+		}
+		var nombre=$.crear("input",opcIn);		
+		nombre.obliga(opcOB);
+		console.log(nombre);
+		form.metele(nombre);
+		w.metele(form);
+	//eval se usa para ejecutar codigo
+		var container=$.get("container");
+		container.metele(h1);
+		container.metele(w);
+		
+	})();
+	</script>
+</body>
+</html>
